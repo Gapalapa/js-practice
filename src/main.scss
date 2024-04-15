@@ -1,0 +1,147 @@
+@charset 'utf-8';
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Silkscreen:wght@400;700&display=swap');
+
+
+/*
+*
+* JS parts
+* Style
+*
+*/
+html, body{
+  @apply font-sans text-base font-normal leading-5 tracking-wide;
+}
+a, button{
+  display: inline-block;
+  cursor: pointer;
+  transition: all .3s;
+  &:hover{
+    opacity: .8;
+  }
+}
+
+main{
+  @apply fixed w-full h-full top-0 left-0 bg-black p-8 overflow-scroll;
+}
+section{
+  @apply relative max-w-3xl w-full mx-auto h-96 bg-white mb-32;
+  &::before{
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    @apply absolute text-white top-0 -left-2 text-sm;
+  }
+}
+.wrap{
+  @apply py-6 overflow-hidden;
+}
+
+/*
+*
+* Toggle menu
+* Style
+*
+*/
+#toggle-menu{
+  &::before{
+    content: "Toggle Menu";
+  }
+  .wrap{
+    @apply px-6;
+  }
+  #btn-toggle{
+    @apply absolute top-6 right-6 max-w-14 w-full h-14;
+    button{
+      border: solid 1px black;
+      transition: all .5s;
+      @apply relative w-full h-full bg-white rounded-full p-2 text-center z-50;
+      span{
+        height: 2px;
+        transition: all .5s;
+        @apply block max-w-8 w-full bg-black mx-auto rounded-sm;
+        &:nth-child(2){
+          @apply my-1;
+        }
+      }
+      &.active{
+        span:first-child{
+          transform: rotate(21.5deg) scaleX(1.1);
+          transform-origin: 0 0;
+          transition: all .5s;
+        }
+        span:nth-child(2){
+          opacity: 0;
+          transition: opacity .5s;
+        }
+        span:last-child{
+          transform: rotate(-21.5deg) scaleX(1.1);
+          transform-origin: 0 100%;
+          transition: all .5s;
+        }
+      }
+    }
+  }
+  #nav-menu{
+    @apply fixed w-full h-full top-0 left-0 bg-white p-7 z-40 font-normal;
+  }
+  #menu{
+    @apply max-w-3xl w-full mx-auto mt-24 flex flex-col justify-center items-center;
+    li{
+      @apply text-2xl mb-5;
+    }
+  }
+}
+
+
+/*
+*
+* Slider
+* Style
+*
+*/
+#slider{
+  &::before{
+    content: "Slider";
+  }
+  #slider-contents{
+    min-width: calc(424px * 6); // 初期値
+    @apply relative flex;
+    li{
+      @apply max-w-96 w-full h-64 bg-gray-700 text-white mx-5 mb-5 flex justify-center items-center;
+    }
+  }
+  #slider-nav{
+    @apply absolute w-full left-0 top-0;
+    li{
+      @apply absolute w-8 h-8;
+      a{
+        padding-right: 2px;
+        border: solid 1px black;
+        @apply w-full h-full bg-white flex justify-center items-center;
+      }
+      &#slider-prev{
+        @apply left-1
+      }
+      &#slider-next{
+        @apply right-1;
+      }
+    }
+  }
+  #slider-dot{
+    @apply flex justify-center items-center;
+    li{
+      a{
+        border: solid 1px #b5b5b5;
+        @apply inline-block w-2 h-2 rounded-full mx-1;
+      }
+      &.slide-target{
+        a{
+          @apply bg-black;
+        }
+      }
+    }
+  }
+}

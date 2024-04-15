@@ -1,0 +1,49 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    title JS Parts
+
+    // CSS
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css")
+  body#js-parts
+    main
+      //- ハンバーガーメニューの閉じるアニメーション
+      section#toggle-menu
+        .wrap
+          #btn-toggle
+            button.js-toggle-open
+              span
+              span
+              span
+          nav#nav-menu.js-toggle-menu(style="display:none;")
+            ul#menu
+              li
+                a(href="http://") メニュー
+              li
+                a(href="http://") メニュー
+              li
+                a(href="http://") メニュー
+              li
+                a(href="http://") メニュー
+              li
+                a(href="http://") メニュー
+              li
+                a(href="http://") メニュー
+      //- スライダー
+      section#slider
+        .wrap.overflow-hidden
+          ul#slider-contents.js-slider
+            li.js-slide-num(data-num="1") 1
+            li.js-slide-num(data-num="2") 2
+            li.js-slide-num(data-num="3") 3
+            li.js-slide-num(data-num="4") 4
+            li.js-slide-num(data-num="5") 5
+          ul#slider-nav.js-slide-nav
+            li#slider-prev
+              a.js-slide-prev(href="#") &lt;
+            li#slider-next
+              a.js-slide-next(href="#") &gt;
+          ul#slider-dot.js-slider-dot
