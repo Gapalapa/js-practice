@@ -1,11 +1,35 @@
-import './main.scss'
+import './main.scss';
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+
 
 $(function(){
-  //- トグルメニュー
+  // トグルメニュー
   $('.js-toggle-open').on('click', function(){
     $(this).toggleClass('active');
     $('.js-toggle-menu').slideToggle();
   });
+
+  // タブ
+  let tabMenu = $('.js-tab-btn');
+  let tabCont = $('.js-tab-content');
+
+  tabCont.eq(0).show();
+
+  let tabLength = tabMenu.length;
+  // for(let i = 0; i = tabLength; i++){
+  //   tabMenu.on('click', function(){
+  //     $(tabMenu).removeClass('active');
+  //     $(this).addClass('active');
+
+  //     tabCont.eq(i).show();
+  //     if(!(tabCont.eq(i))){
+  //       $(this).hide();
+  //     }
+  //   });
+  // }
+
 
   //- スライダー
   let slider = $('.js-slider');
@@ -32,18 +56,39 @@ $(function(){
 
   // スライドの枚数だけドットを追加
   for(let i = 0; i < slideLength; i++){
-    let slideDot = $('.js-slider-dot');
-    slideDot.append('<li><a href="#"></a></li>');
+    let slideDots = $('.js-slider-dots');
+    slideDots.append('<li class="js-slider-dot"><a href="#"></a></li>');
 
     let currentDot = 0;
-    slideDot.eq(currentDot).addClass('slide-target');
+    slideDots.find('li').eq(currentDot).addClass('dot-target');
+
+    $('.js-slider-dot').on('click', function(e){
+      $('.js-slider-dot').removeClass('dot-target');
+      $(this).addClass('dot-target');
+
+      // クリックしたドットの番号と一致するスライドを探して移動
+    });
 
     let prev = $('.js-slide-prev');
-    let currentSlide = 0;
+    let next = $('.js-slide-next');
+    let currentSlide = 0; // スライドの現在地
     let slideArr = [];
-    prev.on('click', function(e){
-      e.preventDefault;
+    prev.on('click', function(){
+      let sliderPosition = parseFloat(slider.css('left')); // 現在のスライド位置を取得
+      let newPosition = sliderPosition + slideWidth; // 前のスライド位置に移動
+      slider.animate({
+        left: newPosition + 'px'
+      });
+      console.log(sliderPosition);
+    });
+    next.on('click', function(){
+      let sliderPosition = parseFloat(slider.css('left')); // 現在のスライド位置を取得
+      let newPosition = sliderPosition + slideWidth; // 前のスライド位置に移動
+      slider.animate({
+        left: newPosition + 'px'
+      });
     });
   }
+
 
 });

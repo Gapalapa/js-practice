@@ -10,7 +10,7 @@ html(lang="ja")
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css")
   body#js-parts
     main
-      //- ハンバーガーメニューの閉じるアニメーション
+      // ハンバーガーメニュー
       section#toggle-menu
         .wrap
           #btn-toggle
@@ -32,7 +32,30 @@ html(lang="ja")
                 a(href="http://") メニュー
               li
                 a(href="http://") メニュー
-      //- スライダー
+
+      // タブ切り替え
+      section#tab
+        .wrap.p-8
+          ul#tab-hd
+            li.js-tab-btn.active
+              button Tab1
+              span
+            li.js-tab-btn
+              button Tab2
+              span
+          ul#tab-1.tab-content.js-tab-content
+            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
+            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
+            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
+            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
+            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
+          ul#tab-2.tab-content.js-tab-content
+            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
+            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
+            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
+            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
+            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
+      // スライダー
       section#slider
         .wrap.overflow-hidden
           ul#slider-contents.js-slider
@@ -43,7 +66,9 @@ html(lang="ja")
             li.js-slide-num(data-num="5") 5
           ul#slider-nav.js-slide-nav
             li#slider-prev
-              a.js-slide-prev(href="#") &lt;
+              a.js-slide-prev(href="#")
+                i.fa.fa-arrow-left(aria-hidden="true")
             li#slider-next
-              a.js-slide-next(href="#") &gt;
-          ul#slider-dot.js-slider-dot
+              a.js-slide-next(href="#")
+                i.fa.fa-arrow-right(aria-hidden="true")
+          ul#slider-dot.js-slider-dots

@@ -5,6 +5,13 @@
 @import "tailwindcss/utilities";
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Silkscreen:wght@400;700&display=swap');
 
+/*
+*
+* JS parts
+* Style
+*
+*/
+$muted: #c9c9c9;
 
 /*
 *
@@ -20,7 +27,7 @@ a, button{
   cursor: pointer;
   transition: all .3s;
   &:hover{
-    opacity: .8;
+    opacity: .6;
   }
 }
 
@@ -95,6 +102,47 @@ section{
   }
 }
 
+/*
+*
+* Tab
+* Style
+*
+*/
+#tab{
+  &::before{
+    content: "Tab";
+  }
+  #tab-hd{
+    @apply flex justify-center items-center p-2;
+    li{
+      @apply relative w-1/2 text-center p-2;
+      &::before{
+        content: "";
+        height: 2px;
+        background-color: $muted;
+        transition: left .3s;
+        @apply absolute w-full bottom-0 left-0;
+      }
+      &.active{
+        &::after{
+          content: "";
+          height: 2px;
+          transition: left .3s;
+          @apply absolute w-full bottom-0 left-0 bg-black z-20;
+        }
+      }
+      button{
+        @apply w-full;
+      }
+    }
+  }
+  .tab-content{
+    @apply pt-4 px-8 hidden;
+    li{
+      @apply mb-4;
+    }
+  }
+}
 
 /*
 *
@@ -134,11 +182,12 @@ section{
     @apply flex justify-center items-center;
     li{
       a{
-        border: solid 1px #b5b5b5;
+        border: solid 1px $muted;
         @apply inline-block w-2 h-2 rounded-full mx-1;
       }
-      &.slide-target{
+      &.dot-target{
         a{
+          border: solid 1px black;
           @apply bg-black;
         }
       }
