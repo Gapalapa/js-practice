@@ -113,26 +113,32 @@ section{
     content: "Tab";
   }
   #tab-hd{
-    @apply flex justify-center items-center p-2;
-    li{
-      @apply relative w-1/2 text-center p-2;
-      &::before{
-        content: "";
-        height: 2px;
-        background-color: $muted;
-        transition: left .3s;
-        @apply absolute w-full bottom-0 left-0;
-      }
-      &.active{
-        &::after{
-          content: "";
-          height: 2px;
-          transition: left .3s;
-          @apply absolute w-full bottom-0 left-0 bg-black z-20;
+    @apply relative flex justify-center items-center;
+    .tab-menu{
+      @apply w-1/2;
+      button{
+        @apply relative w-full text-center p-2;
+        &:hover{
+          background-color: #ddd;
+          transition: all .5s;
         }
       }
-      button{
-        @apply w-full;
+    }
+    .tab-nav{
+      background-color: $muted;
+      height: 2px;
+      @apply absolute w-full left-0 bottom-0 rounded-sm;
+      span.active{
+        background-color: black;
+        height: 2px;
+        transition: all .3s ease-in;
+        @apply absolute w-1/2 bottom-0;
+        &.tab1{
+          left: 0;
+        }
+        &.tab2{
+          left: 50%;
+        }
       }
     }
   }
@@ -192,5 +198,39 @@ section{
         }
       }
     }
+  }
+}
+
+/*
+*
+* SVG
+* Style
+*
+*/
+#svg{
+  &::before{
+    content: "SVG";
+  }
+}
+
+/*
+*
+* Scroll Timeline
+* Style
+*
+*/
+#scroll-tl{
+  .tl-wrap{
+    @apply relative mb-16;
+    &::before{
+      content: "";
+      @apply absolute w-3 h-3 bg-black top-0 left-0 rounded-full;
+    }
+  }
+  .tl-num{
+    @apply relative pl-8 mb-5;
+  }
+  .tl-content{
+    @apply pl-8;
   }
 }

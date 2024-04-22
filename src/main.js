@@ -14,22 +14,19 @@ $(function(){
   // タブ
   let tabMenu = $('.js-tab-btn');
   let tabCont = $('.js-tab-content');
+  let tabActive;
 
   tabCont.eq(0).show();
+  $('.js-tab-nav').append('<span class="js-tab-active"></span>');
 
-  let tabLength = tabMenu.length;
-  // for(let i = 0; i = tabLength; i++){
-  //   tabMenu.on('click', function(){
-  //     $(tabMenu).removeClass('active');
-  //     $(this).addClass('active');
+  tabActive = $('.js-tab-active');
+  tabActive.eq(0).addClass('active');
 
-  //     tabCont.eq(i).show();
-  //     if(!(tabCont.eq(i))){
-  //       $(this).hide();
-  //     }
-  //   });
-  // }
-
+  tabMenu.on('click', function(){
+    let index = $(this).index();
+    tabCont.hide();
+    tabCont.eq(index).fadeIn(500);
+  });
 
   //- スライダー
   let slider = $('.js-slider');
@@ -90,5 +87,19 @@ $(function(){
     });
   }
 
+  // Scroll Timeline
+  let screenTop;
+  let obj = $('.js-scroll-tl');
+  let screenHeight = $(window).height();
+  let objTop = obj.offset().top;
+
+  $(window).on('scroll', function(){
+    screenTop = $(window).scrollTop();
+    console.log(screenTop + screenHeight);
+
+    if(screenTop >= objTop - screenHeight){
+      console.log('hello');
+    }
+  })
 
 });

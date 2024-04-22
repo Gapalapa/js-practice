@@ -36,21 +36,18 @@ html(lang="ja")
       // タブ切り替え
       section#tab
         .wrap.p-8
-          ul#tab-hd
-            li.js-tab-btn.active
+          #tab-hd
+            .tab-menu.tab1.js-tab-btn
               button Tab1
-              span
-            li.js-tab-btn
+            .tab-menu.tab2.js-tab-btn
               button Tab2
-              span
+            .tab-nav.js-tab-nav
           ul#tab-1.tab-content.js-tab-content
             li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
             li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
             li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
             li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
-            li ・タブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入りますタブ1の内容が入ります
           ul#tab-2.tab-content.js-tab-content
-            li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
             li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
             li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
             li ・タブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入りますタブ2の内容が入ります
@@ -72,3 +69,26 @@ html(lang="ja")
               a.js-slide-next(href="#")
                 i.fa.fa-arrow-right(aria-hidden="true")
           ul#slider-dot.js-slider-dots
+
+      // SVG
+      section#svg
+        .wrap
+
+      // Scroll Timeline
+      section#scroll-tl.js-scroll-tl
+        .wrap.p-8
+          ul
+            li.tl-wrap
+              dl.inner
+                dt.tl-num 1996年
+                dd.tl-content
+                  dl
+                    dt 誕生
+                    dd 埼玉県に生まれる
+            li.tl-wrap
+              dl.inner
+                dt.tl-num 1996年
+                dd.tl-content
+                  dl
+                    dt 誕生
+                    dd 埼玉県に生まれる
