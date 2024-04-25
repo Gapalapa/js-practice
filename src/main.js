@@ -26,6 +26,9 @@ $(function(){
     let index = $(this).index();
     tabCont.hide();
     tabCont.eq(index).fadeIn(500);
+    if($(this).hasClass('tab1')){
+
+    }
   });
 
   //- スライダー
@@ -60,10 +63,11 @@ $(function(){
     slideDots.find('li').eq(currentDot).addClass('dot-target');
 
     $('.js-slider-dot').on('click', function(e){
+      e.preventDefault();
       $('.js-slider-dot').removeClass('dot-target');
       $(this).addClass('dot-target');
-
       // クリックしたドットの番号と一致するスライドを探して移動
+
     });
 
     let prev = $('.js-slide-prev');
@@ -82,24 +86,39 @@ $(function(){
       let sliderPosition = parseFloat(slider.css('left')); // 現在のスライド位置を取得
       let newPosition = sliderPosition + slideWidth; // 前のスライド位置に移動
       slider.animate({
-        left: newPosition + 'px'
+        right: newPosition + 'px'
       });
     });
   }
 
   // Scroll Timeline
-  let screenTop;
-  let obj = $('.js-scroll-tl');
-  let screenHeight = $(window).height();
+  let obj = $('.js-tl-wrap');
   let objTop = obj.offset().top;
+  let screenHeight = $(window).height();
+  let objHeight = obj.outerHeight(true);
+
+  // Text fadein
+  let fadeObj = $('.js-text-fadein');
+  let fadeTop = fadeObj.offset().top;
 
   $(window).on('scroll', function(){
-    screenTop = $(window).scrollTop();
-    console.log(screenTop + screenHeight);
-
-    if(screenTop >= objTop - screenHeight){
-      console.log('hello');
+    let scroll = $(this).scrollTop();
+    if(scroll >= objTop - screenHeight){
+      $('.tl-line').each(function(i){
+        $(this).delay(i * 200).queue(function(){
+          $(this).animate({
+            height: objHeight
+          }, 1000, 'swing');
+        });
+      });
     }
-  })
+    if(scroll >= fadeTop - screenHeight){
+      console.log('こんにちは');
+      $('.js-tf-text').each(function(i){
+        $(this).delay()
+      })
+    }
+  });
+
 
 });
